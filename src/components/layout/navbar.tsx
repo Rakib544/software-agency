@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
@@ -13,7 +13,7 @@ export default function Navbar() {
         Next
       </Link>
       <div className="hidden items-center gap-12 lg:flex 2xl:gap-16">
-        <ul className="flex space-x-12 text-center text-sm leading-loose text-muted-foreground md:text-left">
+        <ul className="flex space-x-12 text-center font-medium text-sm leading-loose text-muted-foreground md:text-left">
           <li>
             <Link
               href="/about"
@@ -47,9 +47,6 @@ export default function Navbar() {
             </Link>
           </li>
         </ul>
-      </div>
-      <div className="hidden lg:flex">
-        <Button>Start free trail</Button>
       </div>
 
       <Sheet open={isModalOpen} onOpenChange={setIsModalOpen}>
