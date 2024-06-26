@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -20,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-[rgb(8,8,11)] font-sans antialiased",
+          "min-h-screen bg-[#0D0E11] font-sans antialiased",
           fontSans.variable
         )}
       >
@@ -28,6 +29,7 @@ export default function RootLayout({
           <Navbar />
         </header>
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

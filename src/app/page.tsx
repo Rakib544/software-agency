@@ -1,12 +1,13 @@
-import Features from "@/components/features";
+import Clients from "@/components/clients";
 import Hero from "@/components/hero";
+import Services from "@/components/services";
 
 export default function Home() {
   return (
-    <div className="container">
+    <>
       <Hero />
-      {/* <Clients /> */}
-      <Features />
-    </div>
+      <Clients />
+      <Services />
+    </>
   );
 }
