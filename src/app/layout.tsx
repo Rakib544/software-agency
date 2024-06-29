@@ -1,5 +1,4 @@
-import Footer from "@/components/layout/footer";
-import Navbar from "@/components/layout/navbar";
+import { RootLayoutInner } from "@/components/layout/navbar";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -21,15 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-[#0D0E11] font-sans antialiased",
+          "min-h-screen bg-[#0D0D11] font-sans antialiased",
           fontSans.variable
         )}
       >
-        <header className="container mt-4">
-          <Navbar />
-        </header>
-        <main>{children}</main>
-        <Footer />
+        <RootLayoutInner>{children}</RootLayoutInner>
       </body>
     </html>
   );
