@@ -31,7 +31,7 @@ function MenuIcon(props: any) {
 
 function NavigationRow({ children }: { children: any }) {
   return (
-    <div className="even:mt-px sm:bg-[#131419]">
+    <div className="even:mt-px sm:bg-[#131419] sm:border-t border-white/10">
       <div className="container grid grid-cols-1 sm:grid-cols-2">
         {children}
       </div>
@@ -43,10 +43,10 @@ function NavigationItem({ href, children }: { href: string; children?: any }) {
   return (
     <Link
       href={href}
-      className="group relative isolate -mx-6 bg-[#131419] px-6 py-4 md:py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-neutral-800 sm:even:pl-16"
+      className="group relative isolate -mx-6 bg-[#131419] px-6 py-4 md:py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-white/10 sm:even:pl-16"
     >
       {children}
-      <span className="absolute inset-y-0 -z-10 w-screen bg-[#131419] opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
+      <span className="absolute inset-y-0 -z-10 w-screen bg-[#181C22] opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
     </Link>
   );
 }
@@ -244,10 +244,10 @@ export function RootLayoutInner({
                 />
               </div>
               <Navigation />
-              <div className="relative bg-[#131419] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[#131419]">
+              <div className="relative bg-[#131419] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/10">
                 <div className="container">
                   <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
-                    <div className="sm:border-l sm:border-transparent sm:pl-16">
+                    <div className="sm:border-l sm:border-transparent">
                       <h2 className="font-display text-base font-semibold text-white mb-6">
                         Follow us
                       </h2>

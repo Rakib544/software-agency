@@ -1,5 +1,3 @@
-import ScrollIndicator from "./scroll-indicator";
-
 export default function Hero() {
   return (
     <section className="mt-20 md:mt-40 mb-20 md:mb-32 container">
@@ -11,7 +9,6 @@ export default function Hero() {
         technology. It’s a really busy intersection though — a lot of our staff
         have been involved in hit and runs.
       </p>
-      <ScrollIndicator />
     </section>
   );
 }
