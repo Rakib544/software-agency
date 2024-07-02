@@ -47,3 +47,240 @@
     )
     text;
 }
+
+.testimonials-left-side::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  backdrop-filter: blur(0.5px);
+  mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 12.5%,
+    rgb(0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 37.5%
+  );
+}
+
+.testimonials-left-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  backdrop-filter: blur(26px);
+  mask: linear-gradient(to left, rgba(0, 0, 0, 0) 87.5%, rgb(0, 0, 0) 100%);
+}
+
+.testimonials-left-side > div {
+  position: absolute;
+  inset: 0;
+}
+
+.testimonials-left-side > div:nth-last-of-type(1) {
+  z-index: 2;
+  backdrop-filter: blur(1px);
+  mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 12.5%,
+    rgb(0, 0, 0) 25%,
+    rgb(0, 0, 0) 37.5%,
+    rgba(0, 0, 0, 0) 50%
+  );
+}
+.testimonials-left-side > div:nth-last-of-type(2) {
+  z-index: 3;
+  backdrop-filter: blur(2px);
+  mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 25%,
+    rgb(0, 0, 0) 37.5%,
+    rgb(0, 0, 0) 50%,
+    rgba(0, 0, 0, 0) 62.5%
+  );
+}
+.testimonials-left-side > div:nth-last-of-type(3) {
+  z-index: 4;
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 37.5%,
+    rgb(0, 0, 0) 50%,
+    rgb(0, 0, 0) 62.5%,
+    rgba(0, 0, 0, 0) 75%
+  );
+}
+
+.testimonials-left-side > div:nth-last-of-type(4) {
+  z-index: 5;
+  backdrop-filter: blur(8px);
+  mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 50%,
+    rgb(0, 0, 0) 62.5%,
+    rgb(0, 0, 0) 75%,
+    rgba(0, 0, 0, 0) 87.5%
+  );
+}
+.testimonials-left-side > div:nth-last-of-type(5) {
+  z-index: 6;
+  backdrop-filter: blur(16px);
+  mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 62.5%,
+    rgb(0, 0, 0) 75%,
+    rgb(0, 0, 0) 87.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 62.5%,
+    rgb(0, 0, 0) 75%,
+    rgb(0, 0, 0) 87.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.testimonials-left-side > div:nth-last-of-type(6) {
+  z-index: 7;
+  backdrop-filter: blur(24px);
+  mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 75%,
+    rgb(0, 0, 0) 87.5%,
+    rgb(0, 0, 0) 100%
+  );
+  -webkit-mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 75%,
+    rgb(0, 0, 0) 87.5%,
+    rgb(0, 0, 0) 100%
+  );
+}
+
+/* right */
+.testimonials-right-side::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  backdrop-filter: blur(0.5px);
+  mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 12.5%,
+    rgb(0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 37.5%
+  );
+  -webkit-mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 12.5%,
+    rgb(0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 37.5%
+  );
+}
+
+.testimonials-right-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  backdrop-filter: blur(26px);
+  mask: linear-gradient(to right, rgba(0, 0, 0, 0) 87.5%, rgb(0, 0, 0) 100%);
+  -webkit-mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 87.5%,
+    rgb(0, 0, 0) 100%
+  );
+}
+
+.testimonials-right-side > div {
+  position: absolute;
+  inset: 0;
+}
+
+.testimonials-right-side > div:nth-last-of-type(1) {
+  z-index: 2;
+  backdrop-filter: blur(1px);
+  mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 12.5%,
+    rgb(0, 0, 0) 25%,
+    rgb(0, 0, 0) 37.5%,
+    rgba(0, 0, 0, 0) 50%
+  );
+}
+
+.testimonials-right-side > div:nth-last-of-type(2) {
+  z-index: 3;
+  backdrop-filter: blur(2px);
+  mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 25%,
+    rgb(0, 0, 0) 37.5%,
+    rgb(0, 0, 0) 50%,
+    rgba(0, 0, 0, 0) 62.5%
+  );
+}
+.testimonials-right-side > div:nth-last-of-type(3) {
+  z-index: 4;
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 37.5%,
+    rgb(0, 0, 0) 50%,
+    rgb(0, 0, 0) 62.5%,
+    rgba(0, 0, 0, 0) 75%
+  );
+}
+
+.testimonials-right-side > div:nth-last-of-type(4) {
+  z-index: 5;
+  backdrop-filter: blur(8px);
+  mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 50%,
+    rgb(0, 0, 0) 62.5%,
+    rgb(0, 0, 0) 75%,
+    rgba(0, 0, 0, 0) 87.5%
+  );
+}
+.testimonials-right-side > div:nth-last-of-type(5) {
+  z-index: 6;
+  backdrop-filter: blur(16px);
+  mask: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 62.5%,
+    rgb(0, 0, 0) 75%,
+    rgb(0, 0, 0) 87.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.testimonials-right-side > div:nth-last-of-type(6) {
+  z-index: 7;
+  backdrop-filter: blur(24px);
+  mask: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0) 75%,
+    rgb(0, 0, 0) 87.5%,
+    rgb(0, 0, 0) 100%
+  );
+}
+
+.text-rakib {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: 10000;
+  pointer-events: none;
+  background: radial-gradient(
+    48.62% 48.22% at 50% 48.22%,
+    rgba(11, 11, 15, 0) 0%,
+    rgba(11, 11, 15, 0) 40.25%,
+    rgba(11, 11, 15, 0.36) 67%,
+    rgba(11, 11, 15, 0.9) 90%,
+    rgb(11, 11, 15) 100%
+  );
+}
