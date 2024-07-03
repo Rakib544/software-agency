@@ -1,15 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  AnimatePresence,
-  MotionConfig,
-  motion,
-  useReducedMotion,
-} from "framer-motion";
-import { FigmaIcon, Instagram, Twitter } from "lucide-react";
+import { MotionConfig, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useId, useRef, useState } from "react";
+import { buttonVariants } from "../ui/button";
 import Footer from "./footer";
 
 function XIcon(props: any) {
@@ -39,10 +34,20 @@ function NavigationRow({ children }: { children: any }) {
   );
 }
 
-function NavigationItem({ href, children }: { href: string; children?: any }) {
+function NavigationItem({
+  href,
+  children,
+  closeNavbar,
+}: {
+  href: string;
+  children?: any;
+  closeNavbar: () => void;
+}) {
   return (
     <Link
+      scroll
       href={href}
+      onClick={closeNavbar}
       className="group relative isolate -mx-6 bg-[#131419] px-6 py-4 md:py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-white/10 sm:even:pl-16"
     >
       {children}
@@ -51,16 +56,24 @@ function NavigationItem({ href, children }: { href: string; children?: any }) {
   );
 }
 
-function Navigation() {
+function Navigation({ closeNavbar }: { closeNavbar: () => void }) {
   return (
     <nav className="mt-px font-display text-xl md:text-4xl font-medium tracking-tight text-white">
       <NavigationRow>
-        <NavigationItem href="/work">Our Work</NavigationItem>
-        <NavigationItem href="/about">About Us</NavigationItem>
+        <NavigationItem closeNavbar={closeNavbar} href="/work">
+          Our Work
+        </NavigationItem>
+        <NavigationItem closeNavbar={closeNavbar} href="/about">
+          About Us
+        </NavigationItem>
       </NavigationRow>
       <NavigationRow>
-        <NavigationItem href="/process">Our Process</NavigationItem>
-        <NavigationItem href="/blog">Blog</NavigationItem>
+        <NavigationItem closeNavbar={closeNavbar} href="/process">
+          Our Process
+        </NavigationItem>
+        <NavigationItem closeNavbar={closeNavbar} href="/blogs">
+          Blog
+        </NavigationItem>
       </NavigationRow>
     </nav>
   );
@@ -72,6 +85,7 @@ function Header({
   expanded,
   onToggle,
   toggleRef,
+  closeMenu,
 }: {
   panelId: string;
   invert?: boolean;
@@ -79,11 +93,17 @@ function Header({
   expanded: any;
   onToggle: () => void;
   toggleRef: any;
+  closeMenu: () => void;
 }) {
   return (
     <div className="container">
       <div className="flex items-center justify-between">
-        <Link href="/" aria-label="Home" className="flex items-center h-6">
+        <Link
+          href="/"
+          aria-label="Home"
+          className="flex items-center h-6"
+          onClick={closeMenu}
+        >
           <svg
             width="100%"
             height="100%"
@@ -150,7 +170,13 @@ function Header({
           </svg>
         </Link>
         <div className="flex items-center gap-x-8">
-          <Button>Contact us</Button>
+          <Link
+            href="/contact"
+            className={buttonVariants()}
+            onClick={closeMenu}
+          >
+            Contact us
+          </Link>
           <button
             ref={toggleRef}
             type="button"
@@ -177,7 +203,9 @@ export function RootLayoutInner({
   let [expanded, setExpanded] = useState(false);
   let openRef = useRef();
   let closeRef = useRef();
+  let navRef = useRef(null);
   let shouldReduceMotion = useReducedMotion();
+  const pathname = usePathname();
 
   useEffect(() => {
     function onClick(event: any) {
@@ -192,104 +220,105 @@ export function RootLayoutInner({
       window.removeEventListener("click", onClick);
     };
   }, []);
+
+  function closeNavbar() {
+    setExpanded(false);
+  }
+
   return (
     <MotionConfig
       transition={
         shouldReduceMotion ? { duration: 0 } : { type: "spring", bounce: 0 }
       }
+      key={pathname}
     >
-      <AnimatePresence initial={false}>
-        <header>
-          <div
-            className="absolute left-0 right-0 top-0 z-40 pt-14"
-            aria-hidden={expanded ? "true" : undefined}
-            inert={expanded ? true : undefined}
-          >
-            <Header
-              panelId={panelId}
-              icon={MenuIcon}
-              toggleRef={openRef}
-              expanded={expanded}
-              onToggle={() => {
-                setExpanded((expanded) => !expanded);
-                // window.setTimeout(() =>
-                //   // closeRef.current?.focus({ preventScroll: true })
-                // );
-              }}
-            />
-          </div>
-
-          <motion.div
-            layout
-            id={panelId}
-            animate={{ height: expanded ? "auto" : "0rem" }}
-            className="relative z-50 overflow-hidden bg-[#131419]"
-            aria-hidden={expanded ? undefined : "true"}
-            inert={expanded ? undefined : false}
-          >
-            <motion.div layout transition={{ duration: 2 }}>
-              <div className="bg-[#131419] pb-16 pt-14">
-                <Header
-                  invert
-                  panelId={panelId}
-                  icon={XIcon}
-                  toggleRef={closeRef}
-                  expanded={expanded}
-                  onToggle={() => {
-                    setExpanded((expanded) => !expanded);
-                    // window.setTimeout(() =>
-                    // openRef.current?.focus({ preventScroll: true })
-                    // );
-                  }}
-                />
-              </div>
-              <Navigation />
-              <div className="relative bg-[#131419] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/10">
-                <div className="container">
-                  <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
-                    <div className="sm:border-l sm:border-transparent">
-                      <h2 className="font-display text-base font-semibold text-white mb-6">
-                        Follow us
-                      </h2>
-                      <ul className="flex gap-x-8 mx-auto md:mx-0 order-2 md:order-1">
-                        <li>
-                          <Link href="/">
-                            <Twitter className="h-5 text-muted-foreground hover:text-white transition duration-200" />
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/">
-                            <FigmaIcon className="h-5 text-muted-foreground hover:text-white transition duration-200" />
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/">
-                            <Instagram className="h-5 text-muted-foreground hover:text-white transition duration-200" />
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </header>
+      {/* <AnimatePresence initial={false}> */}
+      <header>
+        <div
+          className="absolute left-0 right-0 top-2 z-40 pt-14"
+          aria-hidden={expanded ? "true" : undefined}
+          // inert={expanded ? "" : undefined}
+        >
+          <Header
+            closeMenu={closeNavbar}
+            panelId={panelId}
+            icon={MenuIcon}
+            toggleRef={openRef}
+            expanded={expanded}
+            onToggle={() => {
+              setExpanded((expanded) => !expanded);
+              window.setTimeout(() =>
+                (closeRef.current as any)?.focus({ preventScroll: true })
+              );
+            }}
+          />
+        </div>
 
         <motion.div
           layout
-          // style={{ borderTopLeftRadius: 40, borderTopRightRadius: 40 }}
-          className="relative flex flex-auto overflow-hidden pt-14"
+          id={panelId}
+          style={{ height: expanded ? "auto" : "0.5rem" }}
+          className="relative z-50 overflow-hidden bg-neutral-950 pt-2"
+          aria-hidden={expanded ? undefined : "true"}
+          // inert={expanded ? undefined : ""}
         >
-          <motion.div
-            layout
-            className="relative isolate flex w-full flex-col pt-9"
-          >
-            <main className="w-full flex-auto">{children}</main>
-            <Footer />
+          <motion.div layout className="bg-neutral-800">
+            <div ref={navRef} className="bg-neutral-950 pb-16 pt-14">
+              <Header
+                closeMenu={closeNavbar}
+                invert
+                panelId={panelId}
+                icon={XIcon}
+                toggleRef={closeRef}
+                expanded={expanded}
+                onToggle={() => {
+                  setExpanded((expanded) => !expanded);
+                  window.setTimeout(() =>
+                    (openRef.current as any)?.focus({ preventScroll: true })
+                  );
+                }}
+              />
+            </div>
+            <Navigation closeNavbar={closeNavbar} />
+            <div className="relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800">
+              <div className="container">
+                <div className="grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16">
+                  <div>
+                    <h2 className="font-display text-base font-semibold text-white">
+                      Our offices
+                    </h2>
+                    {/* <Offices
+                      invert
+                      className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
+                    /> */}
+                  </div>
+                  <div className="sm:border-l sm:border-transparent sm:pl-16">
+                    <h2 className="font-display text-base font-semibold text-white">
+                      Follow us
+                    </h2>
+                    {/* <SocialMedia className="mt-6" invert /> */}
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
-      </AnimatePresence>
+      </header>
+
+      <motion.div
+        layout
+        // style={{ borderTopLeftRadius: 40, borderTopRightRadius: 40 }}
+        className="relative flex flex-auto overflow-hidden pt-14"
+      >
+        <motion.div
+          layout
+          className="relative isolate flex w-full flex-col pt-9"
+        >
+          <main className="w-full flex-auto">{children}</main>
+          <Footer />
+        </motion.div>
+      </motion.div>
+      {/* </AnimatePresence> */}
     </MotionConfig>
   );
 }

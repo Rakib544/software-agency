@@ -54,7 +54,7 @@ export default function Services() {
                 <span className="text-xl font-bold text-muted-foreground">
                   {(index + 1).toString().padStart(2, "0")}
                 </span>
-                <h3 className="text-xl md:text-2xl font-bold text-muted-foreground mt-1">
+                <h3 className="text-xl md:text-2xl font-bold text-white mt-1">
                   {service.title}
                 </h3>
               </div>
